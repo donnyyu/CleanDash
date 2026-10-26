@@ -21,9 +21,9 @@
         android:paddingEnd="10dp"
         android:paddingBottom="14dp">
 
-        <LinearLayout style="@style/Rail.Item" android:background="@drawable/rail_item_accent" android:tag="maps">
-            <ImageView android:tag="icon" style="@style/Rail.ItemIcon" android:tint="@color/rail_on_accent" />
-            <TextView android:tag="label" style="@style/Rail.ItemLabel" android:textColor="@color/rail_on_accent" />
+        <LinearLayout style="@style/Rail.Item" android:tag="maps">
+            <ImageView android:tag="icon" style="@style/Rail.ItemIcon" />
+            <TextView android:tag="label" style="@style/Rail.ItemLabel" />
         </LinearLayout>
 
         <LinearLayout style="@style/Rail.Item" android:tag="carplay">

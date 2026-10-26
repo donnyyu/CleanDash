@@ -100,7 +100,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout style="@style/Analog.Tile" android:tag="maps">
-                    <ImageView style="@style/Analog.TileIcon" android:background="@drawable/analog_button_accent" android:tag="icon" />
+                    <ImageView style="@style/Analog.TileIcon" android:tag="icon" />
                     <TextView style="@style/Analog.TileLabel" android:tag="label" />
                 </LinearLayout>
 

@@ -190,7 +190,7 @@
         android:layout_height="168dp"
         android:orientation="horizontal">
 
-        <LinearLayout style="@style/Instrument.Tile" android:background="@drawable/instrument_tile_accent" android:tag="maps">
+        <LinearLayout style="@style/Instrument.Tile" android:tag="maps">
             <ImageView android:tag="icon" style="@style/Instrument.TileIcon" />
             <TextView android:tag="label" style="@style/Instrument.TileLabel" />
         </LinearLayout>

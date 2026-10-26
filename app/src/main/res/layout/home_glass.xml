@@ -203,15 +203,13 @@
             <LinearLayout
                 style="@style/Glass.Tile"
                 android:layout_weight="2"
-                android:background="@drawable/glass_tile_accent"
                 android:tag="maps">
 
                 <ImageView
                     android:tag="icon"
                     style="@style/Glass.TileIcon"
                     android:layout_width="42dp"
-                    android:layout_height="42dp"
-                    android:tint="@color/glass_on_accent" />
+                    android:layout_height="42dp" />
 
                 <Space
                     android:layout_width="match_parent"
@@ -222,14 +220,12 @@
                     android:tag="label"
                     style="@style/Glass.TileLabel"
                     android:fontFamily="@font/inter_tight_semibold"
-                    android:textColor="@color/glass_on_accent"
                     android:textSize="30sp" />
 
                 <TextView
                     style="@style/Glass.TileLabel"
-                    android:alpha="0.75"
                     android:text="@string/maps_hint"
-                    android:textColor="@color/glass_on_accent"
+                    android:textColor="@color/glass_muted"
                     android:textSize="17sp" />
             </LinearLayout>
 

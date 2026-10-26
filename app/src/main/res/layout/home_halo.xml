@@ -21,11 +21,7 @@
         android:orientation="vertical">
 
         <LinearLayout style="@style/Halo.Tile" android:tag="maps">
-            <ImageView
-                style="@style/Halo.TileIcon"
-                android:background="@drawable/halo_button_accent"
-                android:tag="icon"
-                android:tint="@color/halo_accent" />
+            <ImageView style="@style/Halo.TileIcon" android:tag="icon" />
             <TextView style="@style/Halo.TileLabel" android:tag="label" />
         </LinearLayout>
 
