@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A · Glass Cockpit: clock and now playing on the left, a 3×3 tile grid on the right with Maps across
+     two cells. Tiles carry android:tag = a Tiles id; MainActivity fills their icon and label.
+     fitsSystemWindows keeps everything out of the head unit's own status bar. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/glass_bg"
+    android:fitsSystemWindows="true"
+    android:orientation="horizontal"
+    android:paddingStart="40dp"
+    android:paddingTop="24dp"
+    android:paddingEnd="40dp"
+    android:paddingBottom="32dp">
+
+    <LinearLayout
+        android:layout_width="400dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- Hold the clock for Theme, Home screen settings and Reset. -->
+        <LinearLayout
+            android:id="@+id/clock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:orientation="vertical">
+
+            <TextClock
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_tight_extralight"
+                android:format12Hour="h:mm"
+                android:format24Hour="HH:mm"
+                android:includeFontPadding="false"
+                android:letterSpacing="-0.03"
+                android:textColor="@color/glass_text"
+                android:textSize="120sp" />
+
+            <TextClock
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_tight_regular"
+                android:format12Hour="EEEE, d MMMM"
+                android:format24Hour="EEEE, d MMMM"
+                android:textColor="@color/glass_muted"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/set_home"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/glass_pill"
+            android:fontFamily="@font/inter_tight_medium"
+            android:gravity="center"
+            android:paddingStart="22dp"
+            android:paddingEnd="22dp"
+            android:text="@string/set_home"
+            android:textColor="@color/glass_accent"
+            android:textSize="15sp"
+            android:visibility="gone" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:id="@+id/media_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/glass_card"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:orientation="vertical"
+            android:padding="22dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/media_art"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/glass_art"
+                    android:importantForAccessibility="no"
+                    android:padding="22dp"
+                    android:src="@drawable/ic_music"
+                    android:tint="@color/glass_on_accent" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="18dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/media_state"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_tight_semibold"
+                        android:letterSpacing="0.12"
+                        android:textAllCaps="true"
+                        android:textColor="@color/glass_accent"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/media_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/inter_tight_medium"
+                        android:singleLine="true"
+                        android:textColor="@color/glass_text"
+                        android:textSize="22sp" />
+
+                    <TextView
+                        android:id="@+id/media_artist"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/inter_tight_regular"
+                        android:singleLine="true"
+                        android:textColor="@color/glass_muted"
+                        android:textSize="16sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/glass_track">
+
+                <View
+                    android:id="@+id/media_progress"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/glass_progress"
+                    android:scaleX="0" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/media_prev"
+                    style="@style/Glass.Button"
+                    android:contentDescription="@string/media_prev"
+                    android:src="@drawable/ic_skip_previous" />
+
+                <ImageView
+                    android:id="@+id/media_play"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_marginStart="36dp"
+                    android:layout_marginEnd="36dp"
+                    android:background="@drawable/glass_play"
+                    android:contentDescription="@string/media_play"
+                    android:padding="20dp"
+                    android:src="@drawable/ic_play"
+                    android:tint="@color/glass_bg" />
+
+                <ImageView
+                    android:id="@+id/media_next"
+                    style="@style/Glass.Button"
+                    android:contentDescription="@string/media_next"
+                    android:src="@drawable/ic_skip_next" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- The tiles' 8dp inset doubles as the gap; the negative margins line their edges up with the left column. -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="-8dp"
+        android:layout_marginEnd="-8dp"
+        android:layout_marginBottom="-8dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <LinearLayout style="@style/Glass.Row">
+
+            <LinearLayout
+                style="@style/Glass.Tile"
+                android:layout_weight="2"
+                android:background="@drawable/glass_tile_accent"
+                android:tag="maps">
+
+                <ImageView
+                    android:tag="icon"
+                    style="@style/Glass.TileIcon"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:tint="@color/glass_on_accent" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:tag="label"
+                    style="@style/Glass.TileLabel"
+                    android:fontFamily="@font/inter_tight_semibold"
+                    android:textColor="@color/glass_on_accent"
+                    android:textSize="30sp" />
+
+                <TextView
+                    style="@style/Glass.TileLabel"
+                    android:alpha="0.75"
+                    android:text="@string/maps_hint"
+                    android:textColor="@color/glass_on_accent"
+                    android:textSize="17sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Glass.Tile"
+                android:tag="carplay">
+
+                <ImageView android:tag="icon" style="@style/Glass.TileIcon" />
+                <Space android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" />
+                <TextView android:tag="label" style="@style/Glass.TileLabel" />
+                <TextView android:tag="hint" style="@style/Glass.TileHint" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout style="@style/Glass.Row">
+
+            <LinearLayout style="@style/Glass.Tile" android:tag="radio">
+                <ImageView android:tag="icon" style="@style/Glass.TileIcon" />
+                <Space android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" />
+                <TextView android:tag="label" style="@style/Glass.TileLabel" />
+                <TextView android:tag="hint" style="@style/Glass.TileHint" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/Glass.Tile" android:tag="music">
+                <ImageView android:tag="icon" style="@style/Glass.TileIcon" />
+                <Space android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" />
+                <TextView android:tag="label" style="@style/Glass.TileLabel" />
+                <TextView android:tag="hint" style="@style/Glass.TileHint" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/Glass.Tile" android:tag="bluetooth">
+                <ImageView android:tag="icon" style="@style/Glass.TileIcon" />
+                <Space android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" />
+                <TextView android:tag="label" style="@style/Glass.TileLabel" />
+                <TextView android:tag="hint" style="@style/Glass.TileHint" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout style="@style/Glass.Row">
+
+            <LinearLayout style="@style/Glass.Tile" android:tag="eq">
+                <ImageView android:tag="icon" style="@style/Glass.TileIcon" />
+                <Space android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" />
+                <TextView android:tag="label" style="@style/Glass.TileLabel" />
+                <TextView android:tag="hint" style="@style/Glass.TileHint" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/Glass.Tile" android:tag="settings">
+                <ImageView android:tag="icon" style="@style/Glass.TileIcon" />
+                <Space android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" />
+                <TextView android:tag="label" style="@style/Glass.TileLabel" />
+                <TextView android:tag="hint" style="@style/Glass.TileHint" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/Glass.Tile" android:tag="apps">
+                <ImageView android:tag="icon" style="@style/Glass.TileIcon" />
+                <Space android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" />
+                <TextView android:tag="label" style="@style/Glass.TileLabel" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

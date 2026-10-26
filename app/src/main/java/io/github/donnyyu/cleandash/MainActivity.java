@@ -2,30 +2,60 @@ package io.github.donnyyu.cleandash;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.PendingIntent;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.content.res.ColorStateList;
+import android.graphics.Bitmap;
+import android.media.session.MediaController;
 import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.os.Handler;
+import android.os.Looper;
+import android.provider.Settings;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Consumer;
 
-/** Home: the clock and two rows of tiles that open the head unit's own apps. */
+/**
+ * Home: the clock, what's playing, and tiles that open the head unit's own apps, drawn in the chosen
+ * HomeTheme. A layout marks each tile with android:tag set to a Tiles id, and may show a tile twice; the
+ * tile's icon, label and "not found" hint are tagged "icon", "label" and "hint".
+ */
 public class MainActivity extends Activity {
 
-    private static final int COLUMNS = 4;
+    private static final long TICK_MS = 1000;
+    /** Tags on the parts of a tile, so that tiles repeated in one layout don't share view ids. */
+    private static final String ICON = "icon";
+    private static final String LABEL = "label";
+    private static final String HINT = "hint";
 
-    private final View[] tileViews = new View[Tiles.ALL.length];
+    private final List<View> tileViews = new ArrayList<>();
     private List<AppList.App> apps = Collections.emptyList();
     private View setHome;
+    private NowPlaying nowPlaying;
+    private ColorStateList artTint;
+    private int artPadding;
+
+    private final Handler handler = new Handler(Looper.getMainLooper());
+    private final Runnable tick = new Runnable() {
+        @Override
+        public void run() {
+            bindProgress();
+            handler.postDelayed(this, TICK_MS);
+        }
+    };
 
     private final BroadcastReceiver packagesChanged = new BroadcastReceiver() {
         @Override
@@ -36,8 +66,10 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        HomeTheme theme = HomeTheme.current(this);
+        setTheme(theme.style);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(theme.layout);
 
         setHome = findViewById(R.id.set_home);
         setHome.setOnClickListener(v -> HomeRole.request(this));
@@ -46,24 +78,9 @@ public class MainActivity extends Activity {
             return true;
         });
 
-        ViewGroup[] rows = {findViewById(R.id.row1), findViewById(R.id.row2)};
-        LayoutInflater inflater = getLayoutInflater();
-        for (int i = 0; i < Tiles.ALL.length; i++) {
-            Tiles.Tile tile = Tiles.ALL[i];
-            ViewGroup row = rows[i / COLUMNS];
-            View view = inflater.inflate(R.layout.item_tile, row, false);
-            ((ImageView) view.findViewById(R.id.tile_icon)).setImageResource(tile.icon);
-            ((TextView) view.findViewById(R.id.tile_label)).setText(tile.label);
-            view.setOnClickListener(v -> open(tile));
-            if (!Tiles.APPS.equals(tile.id)) {
-                view.setOnLongClickListener(v -> {
-                    choose(tile);
-                    return true;
-                });
-            }
-            row.addView(view);
-            tileViews[i] = view;
-        }
+        findTiles(findViewById(android.R.id.content));
+        nowPlaying = new NowPlaying(this, this::bindMedia);
+        setUpMedia();
 
         IntentFilter filter = new IntentFilter();
         filter.addAction(Intent.ACTION_PACKAGE_ADDED);
@@ -75,10 +92,25 @@ public class MainActivity extends Activity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        nowPlaying.start();
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         setHome.setVisibility(HomeRole.isHome(this) ? View.GONE : View.VISIBLE);
         refreshTiles();
+        // Notification access may have just been granted in Settings.
+        bindMedia();
+    }
+
+    @Override
+    protected void onStop() {
+        nowPlaying.stop();
+        handler.removeCallbacks(tick);
+        super.onStop();
     }
 
     @Override
@@ -91,6 +123,31 @@ public class MainActivity extends Activity {
     public void onBackPressed() {
         // As Home there is nothing behind this screen; as an ordinary app, Back leaves it.
         if (!HomeRole.isHome(this)) super.onBackPressed();
+    }
+
+    private void findTiles(View view) {
+        Object tag = view.getTag();
+        Tiles.Tile tile = tag instanceof String ? Tiles.byId((String) tag) : null;
+        if (tile != null) {
+            ImageView icon = view.findViewWithTag(ICON);
+            if (icon != null) icon.setImageResource(tile.icon);
+            TextView label = view.findViewWithTag(LABEL);
+            if (label != null) label.setText(tile.label);
+            view.setContentDescription(getText(tile.label));
+            view.setOnClickListener(v -> open(tile));
+            if (!Tiles.APPS.equals(tile.id)) {
+                view.setOnLongClickListener(v -> {
+                    choose(tile);
+                    return true;
+                });
+            }
+            tileViews.add(view);
+        } else if (view instanceof ViewGroup) {
+            ViewGroup group = (ViewGroup) view;
+            for (int i = 0; i < group.getChildCount(); i++) {
+                findTiles(group.getChildAt(i));
+            }
+        }
     }
 
     private void loadApps() {
@@ -107,13 +164,15 @@ public class MainActivity extends Activity {
 
     /** Dims the tiles whose app is not on this unit, so a missing app shows before it is tapped. */
     private void refreshTiles() {
-        for (int i = 0; i < Tiles.ALL.length; i++) {
-            Tiles.Tile tile = Tiles.ALL[i];
+        for (View view : tileViews) {
+            Tiles.Tile tile = Tiles.byId((String) view.getTag());
             boolean found = Tiles.APPS.equals(tile.id) || Tiles.resolve(this, tile, apps) != null;
-            View view = tileViews[i];
-            view.findViewById(R.id.tile_icon).setAlpha(found ? 1f : 0.35f);
-            view.findViewById(R.id.tile_label).setAlpha(found ? 1f : 0.5f);
-            view.findViewById(R.id.tile_hint).setVisibility(found ? View.GONE : View.VISIBLE);
+            View icon = view.findViewWithTag(ICON);
+            if (icon != null) icon.setAlpha(found ? 1f : 0.35f);
+            View label = view.findViewWithTag(LABEL);
+            if (label != null) label.setAlpha(found ? 1f : 0.5f);
+            View hint = view.findViewWithTag(HINT);
+            if (hint != null) hint.setVisibility(found ? View.GONE : View.VISIBLE);
         }
     }
 
@@ -151,15 +210,180 @@ public class MainActivity extends Activity {
                 .show();
     }
 
+    private void setUpMedia() {
+        View card = findViewById(R.id.media_card);
+        if (card == null) return;
+        card.setOnClickListener(v -> openMedia());
+        ImageView art = findViewById(R.id.media_art);
+        if (art != null) {
+            artTint = art.getImageTintList();
+            artPadding = art.getPaddingTop();
+            art.setClipToOutline(true);
+        }
+        onClick(R.id.media_play, v -> control(c -> {
+            if (nowPlaying.isPlaying()) {
+                c.pause();
+            } else {
+                c.play();
+            }
+        }));
+        onClick(R.id.media_prev, v -> control(MediaController.TransportControls::skipToPrevious));
+        onClick(R.id.media_next, v -> control(MediaController.TransportControls::skipToNext));
+    }
+
+    private void onClick(int id, View.OnClickListener listener) {
+        View view = findViewById(id);
+        if (view != null) view.setOnClickListener(listener);
+    }
+
+    /** Sends a command to the playing app. With nothing playing, a button does what tapping the card does. */
+    private void control(Consumer<MediaController.TransportControls> command) {
+        MediaController controller = nowPlaying.controller();
+        if (controller == null) {
+            openMedia();
+        } else {
+            command.accept(controller.getTransportControls());
+        }
+    }
+
+    /** Opens the app that is playing, the Music tile's app when nothing is, or the access screen. */
+    private void openMedia() {
+        if (!NowPlaying.hasAccess(this)) {
+            try {
+                startActivity(new Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS));
+            } catch (ActivityNotFoundException | SecurityException e) {
+                Toast.makeText(this, R.string.media_no_settings, Toast.LENGTH_LONG).show();
+            }
+            return;
+        }
+        MediaController controller = nowPlaying.controller();
+        if (controller != null) {
+            PendingIntent session = controller.getSessionActivity();
+            try {
+                if (session != null) {
+                    session.send();
+                    return;
+                }
+                Intent launch = getPackageManager().getLaunchIntentForPackage(controller.getPackageName());
+                if (launch != null) {
+                    startActivity(launch.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                    return;
+                }
+            } catch (PendingIntent.CanceledException | ActivityNotFoundException | SecurityException e) {
+                // Falls through to the Music tile.
+            }
+        }
+        open(Tiles.byId(Tiles.MUSIC));
+    }
+
+    private void bindMedia() {
+        if (findViewById(R.id.media_card) == null) return;
+        MediaController controller = nowPlaying.controller();
+        boolean playing = nowPlaying.isPlaying();
+        CharSequence state = null;
+        CharSequence source = getText(R.string.media_source);
+        CharSequence title;
+        CharSequence subtitle;
+        if (!NowPlaying.hasAccess(this)) {
+            title = getText(R.string.media_allow);
+            subtitle = getText(R.string.media_allow_hint);
+        } else if (controller == null) {
+            title = getText(R.string.media_nothing);
+            subtitle = getText(R.string.media_open_music);
+        } else {
+            state = getText(playing ? R.string.media_playing : R.string.media_paused);
+            source = appLabel(controller.getPackageName());
+            title = nowPlaying.title();
+            if (TextUtils.isEmpty(title)) title = source;
+            subtitle = nowPlaying.subtitle();
+        }
+        setText(R.id.media_state, state);
+        setText(R.id.media_source, source);
+        setText(R.id.media_title, title);
+        setText(R.id.media_artist, subtitle);
+
+        ImageView play = findViewById(R.id.media_play);
+        if (play != null) play.setImageResource(playing ? R.drawable.ic_pause : R.drawable.ic_play);
+        bindArt(controller == null ? null : nowPlaying.art());
+
+        handler.removeCallbacks(tick);
+        if (playing) {
+            handler.post(tick);
+        } else {
+            bindProgress();
+        }
+    }
+
+    private void bindArt(Bitmap bitmap) {
+        ImageView art = findViewById(R.id.media_art);
+        if (art == null) return;
+        if (bitmap != null) {
+            art.setImageTintList(null);
+            art.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            art.setPadding(0, 0, 0, 0);
+            art.setImageBitmap(bitmap);
+        } else {
+            art.setImageTintList(artTint);
+            art.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            art.setPadding(artPadding, artPadding, artPadding, artPadding);
+            art.setImageResource(R.drawable.ic_music);
+        }
+    }
+
+    private void bindProgress() {
+        View bar = findViewById(R.id.media_progress);
+        if (bar == null) return;
+        bar.setPivotX(0);
+        bar.setScaleX(Math.max(0f, nowPlaying.progress()));
+    }
+
+    private void setText(int id, CharSequence text) {
+        TextView view = findViewById(id);
+        if (view == null) return;
+        view.setText(text);
+        view.setVisibility(TextUtils.isEmpty(text) ? View.INVISIBLE : View.VISIBLE);
+    }
+
+    private CharSequence appLabel(String packageName) {
+        PackageManager pm = getPackageManager();
+        try {
+            return pm.getApplicationLabel(pm.getApplicationInfo(packageName, 0));
+        } catch (PackageManager.NameNotFoundException e) {
+            return getText(R.string.media_source);
+        }
+    }
+
     private void showMenu() {
-        String[] items = {getString(R.string.menu_home), getString(R.string.menu_reset)};
+        String[] items = {getString(R.string.menu_theme), getString(R.string.menu_home),
+                getString(R.string.menu_reset)};
         new AlertDialog.Builder(this)
                 .setItems(items, (dialog, which) -> {
                     if (which == 0) {
+                        chooseTheme();
+                    } else if (which == 1) {
                         HomeRole.request(this);
                     } else {
                         Tiles.clearPicks(this);
                         refreshTiles();
+                    }
+                })
+                .show();
+    }
+
+    private void chooseTheme() {
+        HomeTheme[] themes = HomeTheme.values();
+        String[] names = new String[themes.length];
+        for (int i = 0; i < themes.length; i++) {
+            names[i] = getString(themes[i].label);
+        }
+        HomeTheme current = HomeTheme.current(this);
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.menu_theme)
+                .setSingleChoiceItems(names, current.ordinal(), (dialog, which) -> {
+                    dialog.dismiss();
+                    if (themes[which] != current) {
+                        themes[which].save(this);
+                        recreate();
                     }
                 })
                 .show();

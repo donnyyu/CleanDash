@@ -19,6 +19,7 @@ import java.util.List;
 final class Tiles {
 
     static final String APPS = "apps";
+    static final String MUSIC = "music";
 
     static final class Tile {
         final String id;
@@ -54,7 +55,7 @@ final class Tiles {
                     new String[]{"com.tw.radio", "com.syu.radio", "com.microntek.radio", "com.navimods.radio"},
                     new String[]{"radio", "fm"},
                     null),
-            new Tile("music", R.string.tile_music, R.drawable.ic_music,
+            new Tile(MUSIC, R.string.tile_music, R.drawable.ic_music,
                     NONE,
                     new String[]{"com.tw.music", "com.tw.media", "com.syu.music", "com.microntek.music"},
                     new String[]{"music"},
@@ -89,6 +90,14 @@ final class Tiles {
     };
 
     private Tiles() {}
+
+    /** The tile with this id, as written in a Home layout's android:tag, or null. */
+    static Tile byId(String id) {
+        for (Tile tile : ALL) {
+            if (tile.id.equals(id)) return tile;
+        }
+        return null;
+    }
 
     private static SharedPreferences prefs(Context context) {
         return context.getSharedPreferences("tiles", Context.MODE_PRIVATE);

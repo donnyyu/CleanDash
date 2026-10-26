@@ -78,6 +78,18 @@
             </intent-filter>
         </activity-alias>
 
+        <!-- Holding notification access is what lets the Home media card read other apps' media sessions.
+             See MediaListener.java. -->
+        <service
+            android:name=".MediaListener"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service>
+
         <activity
             android:name=".AppsActivity"
             android:exported="false"

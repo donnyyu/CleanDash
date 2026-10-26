@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Inset: the 8dp gap between tiles is part of each cell, so a two-cell tile lines up with the grid. -->
+<inset xmlns:android="http://schemas.android.com/apk/res/android" android:inset="8dp">
+<ripple android:color="#33000000">
+    <item><shape android:shape="rectangle"><solid android:color="@color/glass_accent" /><corners android:radius="28dp" /></shape></item>
+</ripple>
+</inset>

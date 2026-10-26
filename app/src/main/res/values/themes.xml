@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- One activity theme per HomeTheme. Set before setContentView, so the window and dialogs match. -->
+<resources>
+    <style name="Theme.CleanDash.Glass">
+        <item name="android:windowBackground">@color/glass_bg</item>
+        <item name="android:statusBarColor">@color/glass_bg</item>
+        <item name="android:navigationBarColor">@color/glass_bg</item>
+        <item name="android:colorAccent">@color/glass_accent</item>
+        <item name="android:alertDialogTheme">@style/Theme.CleanDash.Glass.Dialog</item>
+    </style>
+
+    <style name="Theme.CleanDash.Glass.Dialog" parent="android:Theme.Material.Dialog.Alert">
+        <item name="android:colorAccent">@color/glass_accent</item>
+    </style>
+
+    <style name="Theme.CleanDash.Instrument">
+        <item name="android:windowBackground">@color/instrument_bg</item>
+        <item name="android:statusBarColor">@color/instrument_bg</item>
+        <item name="android:navigationBarColor">@color/instrument_bg</item>
+        <item name="android:colorAccent">@color/instrument_accent</item>
+        <item name="android:alertDialogTheme">@style/Theme.CleanDash.Instrument.Dialog</item>
+    </style>
+
+    <style name="Theme.CleanDash.Instrument.Dialog" parent="android:Theme.Material.Dialog.Alert">
+        <item name="android:colorAccent">@color/instrument_accent</item>
+    </style>
+
+    <style name="Theme.CleanDash.Rail" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/rail_bg</item>
+        <item name="android:statusBarColor">@color/rail_bg</item>
+        <item name="android:navigationBarColor">@color/rail_bg</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:colorAccent">@color/rail_accent</item>
+        <item name="android:alertDialogTheme">@style/Theme.CleanDash.Rail.Dialog</item>
+    </style>
+
+    <style name="Theme.CleanDash.Rail.Dialog" parent="android:Theme.Material.Light.Dialog.Alert">
+        <item name="android:colorAccent">@color/rail_accent</item>
+    </style>
+</resources>

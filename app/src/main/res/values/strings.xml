@@ -19,4 +19,24 @@
     <string name="menu_home">Home screen settings</string>
     <string name="menu_reset">Reset all tiles to Automatic</string>
     <string name="close">Close</string>
+
+    <string name="menu_theme">Theme</string>
+    <string name="theme_glass">Glass Cockpit</string>
+    <string name="theme_instrument">Instrument</string>
+    <string name="theme_rail">Driver Rail (light)</string>
+
+    <string name="maps_hint">Navigate</string>
+    <string name="carplay_hint">Connect your phone</string>
+
+    <string name="media_source">Media</string>
+    <string name="media_playing">Now playing</string>
+    <string name="media_paused">Paused</string>
+    <string name="media_nothing">Nothing playing</string>
+    <string name="media_open_music">Tap to open Music</string>
+    <string name="media_allow">Show what\'s playing</string>
+    <string name="media_allow_hint">Tap, then allow notification access for CleanDash</string>
+    <string name="media_no_settings">This head unit has no notification access screen. See the README to allow it with adb.</string>
+    <string name="media_prev">Previous</string>
+    <string name="media_play">Play or pause</string>
+    <string name="media_next">Next</string>
 </resources>

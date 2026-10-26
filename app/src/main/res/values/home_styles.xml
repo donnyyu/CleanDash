@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- View styles for the Home layouts (home_glass, home_instrument, home_rail). -->
+<resources>
+
+    <!-- A · Glass Cockpit -->
+    <style name="Glass" />
+
+    <style name="Glass.Row">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <!-- glass_tile insets its own background by 8dp; 30dp padding leaves 22dp inside the card. -->
+    <style name="Glass.Tile">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:padding">30dp</item>
+        <item name="android:background">@drawable/glass_tile</item>
+    </style>
+
+    <style name="Glass.TileIcon">
+        <item name="android:layout_width">36dp</item>
+        <item name="android:layout_height">36dp</item>
+        <item name="android:importantForAccessibility">no</item>
+        <item name="android:tint">@color/glass_text</item>
+    </style>
+
+    <style name="Glass.TileLabel">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/inter_tight_medium</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textColor">@color/glass_text</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="Glass.TileHint">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/inter_tight_regular</item>
+        <item name="android:text">@string/tile_not_found</item>
+        <item name="android:textColor">@color/glass_muted</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="Glass.Button">
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:padding">15dp</item>
+        <item name="android:background">?android:attr/selectableItemBackgroundBorderless</item>
+        <item name="android:tint">@color/glass_text</item>
+    </style>
+
+    <!-- B · Instrument -->
+    <style name="Instrument" />
+
+    <style name="Instrument.Tile">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginStart">6dp</item>
+        <item name="android:layout_marginEnd">6dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@drawable/instrument_tile</item>
+    </style>
+
+    <style name="Instrument.TileIcon">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:importantForAccessibility">no</item>
+        <item name="android:tint">@color/instrument_text</item>
+    </style>
+
+    <style name="Instrument.TileLabel">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">18dp</item>
+        <item name="android:fontFamily">@font/barlow_semibold</item>
+        <item name="android:letterSpacing">0.2</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/instrument_text</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Instrument.Button">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:background">@drawable/instrument_button</item>
+        <item name="android:tint">@color/instrument_text</item>
+    </style>
+
+    <style name="Instrument.Caption">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/barlow_semibold</item>
+        <item name="android:letterSpacing">0.2</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/instrument_muted</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <!-- C · Driver Rail (light) -->
+    <style name="Rail" />
+
+    <style name="Rail.Item">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:layout_marginBottom">2dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@drawable/rail_item</item>
+    </style>
+
+    <style name="Rail.ItemIcon">
+        <item name="android:layout_width">26dp</item>
+        <item name="android:layout_height">26dp</item>
+        <item name="android:importantForAccessibility">no</item>
+        <item name="android:tint">@color/rail_text</item>
+    </style>
+
+    <style name="Rail.ItemLabel">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:fontFamily">@font/space_grotesk_semibold</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textColor">@color/rail_text</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="Rail.Button">
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:padding">17dp</item>
+        <item name="android:background">@drawable/rail_button</item>
+        <item name="android:tint">@color/rail_text</item>
+    </style>
+</resources>

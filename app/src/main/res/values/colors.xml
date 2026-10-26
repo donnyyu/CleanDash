@@ -6,4 +6,32 @@
     <color name="accent">#4FC3F7</color>
     <color name="text">#F2F4F7</color>
     <color name="text_muted">#8A93A0</color>
+
+    <!-- A · Glass Cockpit -->
+    <color name="glass_bg">#07090C</color>
+    <color name="glass_card">#12161C</color>
+    <color name="glass_line">#1F2630</color>
+    <color name="glass_track">#252C36</color>
+    <color name="glass_text">#F3F5F8</color>
+    <color name="glass_muted">#98A2B3</color>
+    <color name="glass_accent">#5CC8FF</color>
+    <color name="glass_on_accent">#04121C</color>
+
+    <!-- B · Instrument -->
+    <color name="instrument_bg">#000000</color>
+    <color name="instrument_panel">#0A0A0A</color>
+    <color name="instrument_tile">#0D0D0D</color>
+    <color name="instrument_line">#2B2B2B</color>
+    <color name="instrument_text">#EDEDED</color>
+    <color name="instrument_muted">#A3A3A3</color>
+    <color name="instrument_accent">#FF9F1C</color>
+
+    <!-- C · Driver Rail (light) -->
+    <color name="rail_bg">#E6E9EE</color>
+    <color name="rail_card">#FFFFFF</color>
+    <color name="rail_text">#0B0D12</color>
+    <color name="rail_muted">#4A5260</color>
+    <color name="rail_accent">#2F5BFF</color>
+    <color name="rail_on_accent">#FFFFFF</color>
+    <color name="rail_pressed">#1F0B0D12</color>
 </resources>
