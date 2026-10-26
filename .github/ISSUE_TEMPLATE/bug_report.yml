@@ -1,0 +1,43 @@
+name: Bug report / 问题报告
+description: Something in CleanDash doesn't work right. / CleanDash 有功能不正常。
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened? / 发生了什么？
+      description: What you did, what you expected, and what happened instead. Screenshots help. / 你做了什么，预期是什么，实际发生了什么。截图很有帮助。
+    validations:
+      required: true
+  - type: input
+    id: model
+    attributes:
+      label: Head unit model / 车机型号
+      description: The seller's name for it and the board, e.g. "TS18, s9863a1h10". / 卖家给的名称和主板型号，例如 "TS18, s9863a1h10"。
+    validations:
+      required: true
+  - type: input
+    id: android
+    attributes:
+      label: Android version and chip / Android 版本和芯片
+      description: From Settings → About, e.g. "Android 10, Unisoc SC9863A". / 在 设置 → 关于 中查看，例如 "Android 10, 紫光展锐 SC9863A"。
+    validations:
+      required: true
+  - type: input
+    id: screen
+    attributes:
+      label: Screen resolution / 屏幕分辨率
+      description: e.g. 1280×720 or 1024×600. With ADB, `adb shell wm size`. / 例如 1280×720 或 1024×600。有 ADB 的话运行 `adb shell wm size`。
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: CleanDash version and theme / CleanDash 版本和主题
+      description: e.g. "0.1, Night Halo". / 例如 "0.1, Night Halo"。
+  - type: checkboxes
+    id: home
+    attributes:
+      label: Home screen / 主屏幕
+      options:
+        - label: CleanDash is set as the Home screen / CleanDash 已设为主屏幕

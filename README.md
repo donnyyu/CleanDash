@@ -117,6 +117,11 @@ choose *Home screen settings*. CleanDash never disables or uninstalls anything, 
 Early. Runs on a Topway TS18 (Unisoc SC9863A, Android 10, 1280×720) and the Android emulator. The CleanDash screens
 are in English for now.
 
+## Contributing
+
+Pull requests are welcome: bug fixes, support for more head units and new themes. See
+[CONTRIBUTING.md](CONTRIBUTING.md) for the project's rules, how to build and test, and where things are.
+
 ## License
 
 [MIT](LICENSE). Third-party parts are listed in [NOTICE.md](NOTICE.md).

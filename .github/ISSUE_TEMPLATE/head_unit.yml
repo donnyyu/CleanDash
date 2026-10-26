@@ -1,0 +1,36 @@
+name: Support my head unit / 适配我的车机
+description: A tile can't find one of your head unit's built-in apps, or the layout doesn't fit your screen. / 某个图块找不到车机自带的应用，或者布局不适合你的屏幕。
+labels: [enhancement]
+body:
+  - type: input
+    id: model
+    attributes:
+      label: Head unit model / 车机型号
+      description: The seller's name for it and the board, e.g. "TS18, s9863a1h10". / 卖家给的名称和主板型号。
+    validations:
+      required: true
+  - type: input
+    id: android
+    attributes:
+      label: Android version, chip and screen resolution / Android 版本、芯片和屏幕分辨率
+      description: e.g. "Android 10, Unisoc SC9863A, 1280×720". / 例如 "Android 10, 紫光展锐 SC9863A, 1280×720"。
+    validations:
+      required: true
+  - type: textarea
+    id: tiles
+    attributes:
+      label: Which tiles don't find their app? / 哪些图块找不到应用？
+      description: e.g. "Radio and EQ are dimmed". / 例如 "Radio 和 EQ 是暗的"。
+  - type: textarea
+    id: packages
+    attributes:
+      label: The head unit's built-in apps / 车机自带应用的包名
+      description: |
+        If you have ADB, paste the output of / 如果你有 ADB，请粘贴以下命令的输出：
+        `adb shell pm list packages | grep -iE "radio|music|media|bt|bluetooth|eq|setting|link|carplay|nav"`
+      render: text
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: Screenshot / 截图
+      description: A photo or screenshot of CleanDash on the unit, especially if the layout doesn't fit. / CleanDash 在车机上的照片或截图，尤其是布局显示不全的时候。

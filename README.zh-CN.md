@@ -104,6 +104,10 @@ TS18 的固件给这两项都加了密码：
 
 早期版本。已在 Topway TS18（紫光展锐 SC9863A，Android 10，1280×720）和安卓模拟器上运行。CleanDash 的界面目前只有英文。
 
+## 参与开发
+
+欢迎提交 pull request：问题修复、更多车机的适配和新主题。项目原则、编译测试方法和代码结构见 [CONTRIBUTING.zh-CN.md](CONTRIBUTING.zh-CN.md)。
+
 ## 许可证
 
 [MIT](LICENSE)。第三方组件见 [NOTICE.md](NOTICE.md)。
