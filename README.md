@@ -21,7 +21,19 @@ Inspired by [cleanyourtv](https://github.com/Gathin23/cleanyourtv).
 
 ![Driver Rail theme: white icon rail on the left, big clock, now playing card and a blue CarPlay card](docs/screenshots/rail.png)
 
-These three are from the Android emulator at the TS18's 1280×720, with a demo track playing and stand-in apps so
+**Analog Studio (light)**
+
+![Analog Studio theme: clock face on the left, eight round keys, now playing bar along the bottom](docs/screenshots/analog.png)
+
+**Night Halo**
+
+![Night Halo theme: black, four round keys down each side, big clock and track in the middle](docs/screenshots/halo.png)
+
+**Color Cards**
+
+![Color Cards theme: two rows of four coloured cards, clock and a mini player on top](docs/screenshots/cards.png)
+
+These six are from the Android emulator at the TS18's 1280×720, with a demo track playing and stand-in apps so
 every tile has something to open. This one is from a real Topway TS18 (Android 10), with the head unit's own status
 bar on top and nothing playing:
 
@@ -32,11 +44,17 @@ bar on top and nothing playing:
 One screen: a large clock and date, what's playing, and big tiles for **Radio, Music, Bluetooth, Maps, CarPlay,
 Settings, EQ** and **All apps**. The tiles open the apps already on your head unit. CleanDash does not replace them.
 
-Three looks, switched by holding the clock → *Theme*:
+Six looks, switched by holding the clock → *Theme*:
 
 - **Glass Cockpit:** dark, with the clock and now playing on the left and a tile grid with a wide Maps tile.
 - **Instrument:** black and amber, a big condensed clock, an LCD-style media panel and a row of eight keys.
 - **Driver Rail (light):** a day theme with an icon rail on the left, a big clock, now playing and a CarPlay card.
+- **Analog Studio (light):** a warm day theme with a clock face, eight round keys and a now-playing bar.
+- **Night Halo:** near-black for night driving, with four round keys down each edge where a thumb finds them.
+- **Color Cards:** one colour per app, in two rows of big cards, with the clock and a mini player on top.
+
+Every theme is laid out for landscape screens from 1024×600 up: checked at 1024×600, 1280×720, 1920×720 and
+2000×1200. Portrait ("Tesla-style") screens aren't supported yet.
 
 Everything else works the same in every theme:
 

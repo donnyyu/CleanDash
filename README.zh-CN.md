@@ -22,7 +22,19 @@
 
 ![Driver Rail 主题：左侧白色图标栏、大号时钟、正在播放卡片和蓝色 CarPlay 卡片](docs/screenshots/rail.png)
 
-以上三张截自安卓模拟器，分辨率与 TS18 相同（1280×720），播放的是演示曲目，并装了占位应用，让每个图块都有可打开的应用。下面这张截自一台真实的 Topway TS18（Android 10），顶部是车机自带的状态栏，当时没有在播放：
+**Analog Studio (light)（模拟工作室，浅色）**
+
+![Analog Studio 主题：左侧表盘，八个圆形按键，底部是正在播放栏](docs/screenshots/analog.png)
+
+**Night Halo（夜光环）**
+
+![Night Halo 主题：黑色背景，左右两侧各四个圆形按键，中间是大号时钟和当前曲目](docs/screenshots/halo.png)
+
+**Color Cards（彩色卡片）**
+
+![Color Cards 主题：两排共八张彩色卡片，顶部是时钟和迷你播放器](docs/screenshots/cards.png)
+
+以上六张截自安卓模拟器，分辨率与 TS18 相同（1280×720），播放的是演示曲目，并装了占位应用，让每个图块都有可打开的应用。下面这张截自一台真实的 Topway TS18（Android 10），顶部是车机自带的状态栏，当时没有在播放：
 
 ![在真实 TS18 车机上运行的 Driver Rail 主题](docs/screenshots/ts18-head-unit.png)
 
@@ -30,11 +42,16 @@
 
 只有一个屏幕：大号时钟和日期、正在播放的内容，以及 **Radio（收音机）、Music（音乐）、Bluetooth（蓝牙）、Maps（地图）、CarPlay、Settings（设置）、EQ（均衡器）** 和 **All apps（全部应用）** 这几个大图块。图块打开的是车机上已有的应用，CleanDash 不会替换它们。
 
-三种外观，长按时钟 → *Theme*（主题）切换：
+六种外观，长按时钟 → *Theme*（主题）切换：
 
 - **Glass Cockpit：** 深色。左侧是时钟和正在播放，右侧是图块网格，地图图块加宽。
 - **Instrument：** 黑底琥珀色。大号窄体时钟、仿液晶屏的媒体面板，底部一排八个按键。
 - **Driver Rail (light)：** 白天用的浅色主题。左侧图标栏、大号时钟、正在播放和 CarPlay 卡片。
+- **Analog Studio (light)：** 暖色调的白天主题。指针表盘、八个圆形按键和正在播放栏。
+- **Night Halo：** 接近纯黑，适合夜间驾驶。左右两侧各四个圆形按键，拇指不用看也能摸到。
+- **Color Cards：** 每个应用一种颜色，两排大卡片，顶部是时钟和迷你播放器。
+
+每个主题都适配 1024×600 及以上的横屏：已在 1024×600、1280×720、1920×720 和 2000×1200 上检查过。暂不支持竖屏（"特斯拉式"）车机。
 
 以下功能在每个主题里都一样：
 
