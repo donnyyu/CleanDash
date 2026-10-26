@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- No INTERNET permission: the launcher only opens apps that are already installed. -->
+
+    <!-- Android 11+ package visibility: the app drawer lists launchable apps, and the tiles look up
+         head-unit apps whose screens have no LAUNCHER entry (EQ, car settings). See Tiles.java. -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.APP_MUSIC" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.APP_MAPS" />
+        </intent>
+        <intent>
+            <action android:name="android.settings.BLUETOOTH_SETTINGS" />
+        </intent>
+        <intent>
+            <action android:name="android.settings.SETTINGS" />
+        </intent>
+        <!-- Topway TS10/TS18 (DoFun) -->
+        <package android:name="com.tw.radio" />
+        <package android:name="com.tw.music" />
+        <package android:name="com.tw.media" />
+        <package android:name="com.tw.bt" />
+        <package android:name="com.tw.eq" />
+        <package android:name="com.dofun.carsetting" />
+        <!-- FYT -->
+        <package android:name="com.syu.radio" />
+        <package android:name="com.syu.music" />
+        <package android:name="com.syu.bt" />
+        <package android:name="com.syu.eq" />
+        <!-- Microntek (MTCD/MTCE) -->
+        <package android:name="com.microntek.radio" />
+        <package android:name="com.microntek.music" />
+        <package android:name="com.microntek.bluetooth" />
+    </queries>
+
+    <application
+        android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher"
+        android:theme="@style/Theme.CleanDash"
+        android:allowBackup="false"
+        android:supportsRtl="true">
+
+        <!-- Opens like any other app first, from the stock app list. -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:stateNotNeeded="true"
+            android:clearTaskOnLaunch="true"
+            android:excludeFromRecents="true"
+            android:configChanges="orientation|screenSize|screenLayout|keyboard|keyboardHidden|uiMode|density">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- HOME is off until the person taps "Set as Home" (HomeRole.java), so a launcher that breaks
+             on some unit can never take over before it has been tried as an ordinary app. -->
+        <activity-alias
+            android:name=".HomeAlias"
+            android:targetActivity=".MainActivity"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity
+            android:name=".AppsActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:configChanges="orientation|screenSize|screenLayout|keyboard|keyboardHidden|uiMode|density" />
+    </application>
+</manifest>

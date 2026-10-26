@@ -1,0 +1,37 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'io.github.donnyyu.cleandash'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'io.github.donnyyu.cleandash'
+        // Android 8.0. TS18 units ship Android 10, older head units Android 8/9.
+        minSdk 26
+        targetSdk 34
+        versionCode 1
+        versionName '0.1'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
+            // Sideloaded, never published: the debug key lets a release install over a debug build.
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+// Plain Java and platform Views only: no AndroidX, no Kotlin, no network.
+dependencies {
+    testImplementation 'junit:junit:4.13.2'
+}
