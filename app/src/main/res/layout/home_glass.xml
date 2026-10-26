@@ -18,6 +18,12 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <!-- Space above and below (1:2) puts the clock a third of the way down to the player. -->
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
         <!-- Hold the clock for Theme, Home screen settings and Reset. -->
         <LinearLayout
             android:id="@+id/clock"
@@ -65,7 +71,7 @@
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_weight="2" />
 
         <LinearLayout
             android:id="@+id/media_card"

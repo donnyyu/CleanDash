@@ -53,8 +53,22 @@ Six looks, switched by holding the clock → *Theme*:
 - **Night Halo:** near-black for night driving, with four round keys down each edge where a thumb finds them.
 - **Color Cards:** one colour per app, in two rows of big cards, with the clock and a mini player on top.
 
-Every theme is laid out for landscape screens from 1024×600 up: checked at 1024×600, 1280×720, 1920×720 and
-2000×1200. Portrait ("Tesla-style") screens aren't supported yet.
+### Supported screen sizes
+
+Every theme is laid out for landscape screens from 1024×600 up. These are the common head unit screens and how
+CleanDash has been checked on them:
+
+| Resolution | Typical head units | Status |
+|---|---|---|
+| **1024×600** | The cheapest and most common 7–10" units | All six themes checked on the emulator |
+| **1280×720** | Mid-range 9–10" units such as the Topway TS10/TS18 | All six themes checked; runs on a real TS18 |
+| **1920×720** | 12.3" wide "bar" screens | All six themes checked on the emulator |
+| **2000×1200** (2K) | Newer high-end 9–13" units | All six themes checked on the emulator (240 dpi) |
+| **800×480** | Old or very cheap units | Not supported, too small for these layouts |
+| Portrait (e.g. 1080×1920) | "Tesla-style" vertical screens | Not supported yet |
+
+Other landscape sizes in between, such as 1280×800, should work, since the layouts stretch to fit. If yours
+doesn't look right, open a "Support my head unit" issue with a screenshot.
 
 Everything else works the same in every theme:
 
