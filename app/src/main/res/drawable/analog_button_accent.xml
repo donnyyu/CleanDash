@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A round key on a 2dp darker edge below it, like a physical button. -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android" android:color="#1F1C1C1A">
+    <item><shape android:shape="oval"><solid android:color="@color/analog_accent_edge" /></shape></item>
+    <item android:bottom="2dp"><shape android:shape="oval"><solid android:color="@color/analog_accent" /></shape></item>
+</ripple>

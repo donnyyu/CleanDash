@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Compact sizes, for screens under 640dp tall (1024×600 head units) or under 1200dp wide. The TS18's
+     1280×720 screen (1280×662dp once the status bar is taken off) uses values-h640dp and values-w1200dp. -->
+<resources>
+    <dimen name="halo_key">76dp</dimen>
+    <dimen name="halo_key_padding">24dp</dimen>
+    <dimen name="halo_key_gap">5dp</dimen>
+    <dimen name="halo_clock">150sp</dimen>
+    <dimen name="cards_player_width">340dp</dimen>
+</resources>

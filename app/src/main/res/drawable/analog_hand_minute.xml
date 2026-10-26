@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Analog Studio clock: 300×300, centred, for AnalogClock (see home_analog.xml). The accent dot at the centre rides on the minute hand. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="300dp"
+    android:height="300dp"
+    android:viewportWidth="300"
+    android:viewportHeight="300">
+    <path android:strokeColor="@color/analog_text" android:strokeWidth="5" android:strokeLineCap="round"
+        android:pathData="M150,170L150,44" />
+    <path android:fillColor="@color/analog_accent" android:pathData="M150,140a10,10 0 1,0 0.01,0z" />
+</vector>

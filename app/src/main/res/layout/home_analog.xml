@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- D · Analog Studio (light): a clock face, eight round keys, and now playing along the bottom.
+     Tiles carry android:tag = a Tiles id, their parts "icon" and "label"; MainActivity fills them. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/analog_bg"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:paddingStart="44dp"
+    android:paddingTop="24dp"
+    android:paddingEnd="44dp"
+    android:paddingBottom="28dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <!-- Hold the clock for Theme, Home screen settings and Reset. -->
+            <LinearLayout
+                android:id="@+id/clock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <!-- The platform AnalogClock is deprecated but still works, and draws these three drawables. -->
+                <AnalogClock
+                    android:layout_width="280dp"
+                    android:layout_height="280dp"
+                    android:dial="@drawable/analog_dial"
+                    android:hand_hour="@drawable/analog_hand_hour"
+                    android:hand_minute="@drawable/analog_hand_minute" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:baselineAligned="true"
+                    android:orientation="horizontal">
+
+                    <TextClock
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/archivo_semibold"
+                        android:format12Hour="h:mm"
+                        android:format24Hour="HH:mm"
+                        android:textColor="@color/analog_text"
+                        android:textSize="32sp" />
+
+                    <TextClock
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:fontFamily="@font/archivo_medium"
+                        android:format12Hour="EEE d MMM"
+                        android:format24Hour="EEE d MMM"
+                        android:textColor="@color/analog_muted"
+                        android:textSize="20sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/set_home"
+                android:layout_width="wrap_content"
+                android:layout_height="44dp"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/analog_pill"
+                android:fontFamily="@font/archivo_semibold"
+                android:gravity="center"
+                android:paddingStart="22dp"
+                android:paddingEnd="22dp"
+                android:text="@string/set_home"
+                android:textColor="@color/analog_text"
+                android:textSize="15sp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <LinearLayout style="@style/Analog.Tile" android:tag="maps">
+                    <ImageView style="@style/Analog.TileIcon" android:background="@drawable/analog_button_accent" android:tag="icon" />
+                    <TextView style="@style/Analog.TileLabel" android:tag="label" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/Analog.Tile" android:tag="carplay">
+                    <ImageView style="@style/Analog.TileIcon" android:tag="icon" />
+                    <TextView style="@style/Analog.TileLabel" android:tag="label" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/Analog.Tile" android:tag="radio">
+                    <ImageView style="@style/Analog.TileIcon" android:tag="icon" />
+                    <TextView style="@style/Analog.TileLabel" android:tag="label" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/Analog.Tile" android:tag="music">
+                    <ImageView style="@style/Analog.TileIcon" android:tag="icon" />
+                    <TextView style="@style/Analog.TileLabel" android:tag="label" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <LinearLayout style="@style/Analog.Tile" android:tag="bluetooth">
+                    <ImageView style="@style/Analog.TileIcon" android:tag="icon" />
+                    <TextView style="@style/Analog.TileLabel" android:tag="label" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/Analog.Tile" android:tag="eq">
+                    <ImageView style="@style/Analog.TileIcon" android:tag="icon" />
+                    <TextView style="@style/Analog.TileLabel" android:tag="label" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/Analog.Tile" android:tag="settings">
+                    <ImageView style="@style/Analog.TileIcon" android:tag="icon" />
+                    <TextView style="@style/Analog.TileLabel" android:tag="label" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/Analog.Tile" android:tag="apps">
+                    <ImageView
+                        style="@style/Analog.TileIcon"
+                        android:background="@drawable/analog_button_dark"
+                        android:tag="icon"
+                        android:tint="@color/analog_panel" />
+                    <TextView style="@style/Analog.TileLabel" android:tag="label" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/media_card"
+        android:layout_width="match_parent"
+        android:layout_height="112dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/analog_bar"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="18dp"
+        android:paddingEnd="22dp">
+
+        <ImageView
+            android:id="@+id/media_art"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:background="@drawable/analog_art"
+            android:importantForAccessibility="no"
+            android:padding="23dp"
+            android:src="@drawable/ic_music"
+            android:tint="@color/analog_panel" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
+            android:layout_marginEnd="22dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/media_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/archivo_semibold"
+                    android:maxWidth="420dp"
+                    android:singleLine="true"
+                    android:textColor="@color/analog_text"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/media_artist"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/archivo_medium"
+                    android:singleLine="true"
+                    android:textColor="@color/analog_muted"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/analog_track">
+
+                <View
+                    android:id="@+id/media_progress"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/analog_progress"
+                    android:scaleX="0" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/media_prev"
+            style="@style/Analog.Button"
+            android:contentDescription="@string/media_prev"
+            android:src="@drawable/ic_skip_previous" />
+
+        <ImageView
+            android:id="@+id/media_play"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/analog_play"
+            android:contentDescription="@string/media_play"
+            android:padding="25dp"
+            android:src="@drawable/ic_play"
+            android:tint="@color/analog_text" />
+
+        <ImageView
+            android:id="@+id/media_next"
+            style="@style/Analog.Button"
+            android:contentDescription="@string/media_next"
+            android:src="@drawable/ic_skip_next" />
+    </LinearLayout>
+</LinearLayout>

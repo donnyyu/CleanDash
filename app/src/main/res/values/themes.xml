@@ -37,4 +37,41 @@
     <style name="Theme.CleanDash.Rail.Dialog" parent="android:Theme.Material.Light.Dialog.Alert">
         <item name="android:colorAccent">@color/rail_accent</item>
     </style>
+
+    <style name="Theme.CleanDash.Analog" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/analog_bg</item>
+        <item name="android:statusBarColor">@color/analog_bg</item>
+        <item name="android:navigationBarColor">@color/analog_bg</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:colorAccent">@color/analog_accent_edge</item>
+        <item name="android:alertDialogTheme">@style/Theme.CleanDash.Analog.Dialog</item>
+    </style>
+
+    <style name="Theme.CleanDash.Analog.Dialog" parent="android:Theme.Material.Light.Dialog.Alert">
+        <item name="android:colorAccent">@color/analog_accent_edge</item>
+    </style>
+
+    <style name="Theme.CleanDash.Halo">
+        <item name="android:windowBackground">@color/halo_bg</item>
+        <item name="android:statusBarColor">@color/halo_bg</item>
+        <item name="android:navigationBarColor">@color/halo_bg</item>
+        <item name="android:colorAccent">@color/halo_accent</item>
+        <item name="android:alertDialogTheme">@style/Theme.CleanDash.Halo.Dialog</item>
+    </style>
+
+    <style name="Theme.CleanDash.Halo.Dialog" parent="android:Theme.Material.Dialog.Alert">
+        <item name="android:colorAccent">@color/halo_accent</item>
+    </style>
+
+    <style name="Theme.CleanDash.Cards">
+        <item name="android:windowBackground">@color/cards_bg</item>
+        <item name="android:statusBarColor">@color/cards_bg</item>
+        <item name="android:navigationBarColor">@color/cards_bg</item>
+        <item name="android:colorAccent">@color/cards_carplay</item>
+        <item name="android:alertDialogTheme">@style/Theme.CleanDash.Cards.Dialog</item>
+    </style>
+
+    <style name="Theme.CleanDash.Cards.Dialog" parent="android:Theme.Material.Dialog.Alert">
+        <item name="android:colorAccent">@color/cards_carplay</item>
+    </style>
 </resources>

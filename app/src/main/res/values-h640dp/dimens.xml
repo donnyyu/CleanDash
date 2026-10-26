@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="halo_key">92dp</dimen>
+    <dimen name="halo_key_padding">29dp</dimen>
+    <dimen name="halo_key_gap">10dp</dimen>
+    <dimen name="halo_clock">184sp</dimen>
+</resources>

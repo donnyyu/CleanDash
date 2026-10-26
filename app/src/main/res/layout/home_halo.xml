@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- E · Night Halo: near-black for night driving. Four round keys down each screen edge, where a thumb finds
+     them, and the clock and track in the middle. Tiles carry android:tag = a Tiles id, their parts "icon" and
+     "label"; MainActivity fills them. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/halo_bg"
+    android:fitsSystemWindows="true"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingStart="48dp"
+    android:paddingTop="16dp"
+    android:paddingEnd="48dp"
+    android:paddingBottom="16dp">
+
+    <LinearLayout
+        android:layout_width="112dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <LinearLayout style="@style/Halo.Tile" android:tag="maps">
+            <ImageView
+                style="@style/Halo.TileIcon"
+                android:background="@drawable/halo_button_accent"
+                android:tag="icon"
+                android:tint="@color/halo_accent" />
+            <TextView style="@style/Halo.TileLabel" android:tag="label" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/Halo.Tile" android:tag="carplay">
+            <ImageView style="@style/Halo.TileIcon" android:tag="icon" />
+            <TextView style="@style/Halo.TileLabel" android:tag="label" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/Halo.Tile" android:tag="radio">
+            <ImageView style="@style/Halo.TileIcon" android:tag="icon" />
+            <TextView style="@style/Halo.TileLabel" android:tag="label" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/Halo.Tile" android:tag="music">
+            <ImageView style="@style/Halo.TileIcon" android:tag="icon" />
+            <TextView style="@style/Halo.TileLabel" android:tag="label" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <!-- Hold the clock for Theme, Home screen settings and Reset. -->
+        <LinearLayout
+            android:id="@+id/clock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextClock
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/outfit_extralight"
+                android:format12Hour="h:mm"
+                android:format24Hour="HH:mm"
+                android:includeFontPadding="false"
+                android:letterSpacing="-0.03"
+                android:textColor="@color/halo_bright"
+                android:textSize="@dimen/halo_clock" />
+
+            <TextClock
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/outfit_light"
+                android:format12Hour="EEEE d MMMM"
+                android:format24Hour="EEEE d MMMM"
+                android:letterSpacing="0.18"
+                android:textAllCaps="true"
+                android:textColor="@color/halo_muted"
+                android:textSize="21sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/set_home"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/halo_pill"
+            android:fontFamily="@font/outfit_regular"
+            android:gravity="center"
+            android:paddingStart="22dp"
+            android:paddingEnd="22dp"
+            android:text="@string/set_home"
+            android:textColor="@color/halo_text"
+            android:textSize="15sp"
+            android:visibility="gone" />
+
+        <View
+            android:layout_width="120dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="26dp"
+            android:background="@drawable/halo_rule" />
+
+        <LinearLayout
+            android:id="@+id/media_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <TextView
+                android:id="@+id/media_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/outfit_regular"
+                android:maxWidth="640dp"
+                android:singleLine="true"
+                android:textColor="@color/halo_bright"
+                android:textSize="28sp" />
+
+            <TextView
+                android:id="@+id/media_artist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/outfit_light"
+                android:maxWidth="640dp"
+                android:singleLine="true"
+                android:textColor="@color/halo_muted"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/media_prev"
+                    style="@style/Halo.Button"
+                    android:contentDescription="@string/media_prev"
+                    android:src="@drawable/ic_skip_previous" />
+
+                <ImageView
+                    android:id="@+id/media_play"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginStart="28dp"
+                    android:layout_marginEnd="28dp"
+                    android:background="@drawable/halo_play"
+                    android:contentDescription="@string/media_play"
+                    android:padding="25dp"
+                    android:src="@drawable/ic_play"
+                    android:tint="@color/halo_bg" />
+
+                <ImageView
+                    android:id="@+id/media_next"
+                    style="@style/Halo.Button"
+                    android:contentDescription="@string/media_next"
+                    android:src="@drawable/ic_skip_next" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="112dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <LinearLayout style="@style/Halo.Tile" android:tag="bluetooth">
+            <ImageView style="@style/Halo.TileIcon" android:tag="icon" />
+            <TextView style="@style/Halo.TileLabel" android:tag="label" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/Halo.Tile" android:tag="eq">
+            <ImageView style="@style/Halo.TileIcon" android:tag="icon" />
+            <TextView style="@style/Halo.TileLabel" android:tag="label" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/Halo.Tile" android:tag="settings">
+            <ImageView style="@style/Halo.TileIcon" android:tag="icon" />
+            <TextView style="@style/Halo.TileLabel" android:tag="label" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/Halo.Tile" android:tag="apps">
+            <ImageView style="@style/Halo.TileIcon" android:tag="icon" />
+            <TextView style="@style/Halo.TileLabel" android:tag="label" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

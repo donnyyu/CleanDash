@@ -5,8 +5,12 @@ CleanDash is released under the [MIT License](LICENSE).
 - **Fonts** (`app/src/main/res/font/`), SIL Open Font License 1.1, cut down to Latin and fixed weights:
   [Inter Tight](https://github.com/rsms/inter-tight) by The Inter Project Authors ([licence](licenses/OFL-InterTight.txt)),
   [Barlow and Barlow Condensed](https://github.com/jpt/barlow) by The Barlow Project Authors
-  ([licence](licenses/OFL-Barlow.txt)), and [Space Grotesk](https://github.com/floriankarsten/space-grotesk) by The
-  Space Grotesk Project Authors ([licence](licenses/OFL-SpaceGrotesk.txt)).
+  ([licence](licenses/OFL-Barlow.txt)), [Space Grotesk](https://github.com/floriankarsten/space-grotesk) by The
+  Space Grotesk Project Authors ([licence](licenses/OFL-SpaceGrotesk.txt)), [Archivo](https://github.com/Omnibus-Type/Archivo)
+  by The Archivo Project Authors ([licence](licenses/OFL-Archivo.txt)), [Outfit](https://github.com/Outfitio/Outfit-Fonts)
+  by The Outfit Project Authors ([licence](licenses/OFL-Outfit.txt)), and
+  [Plus Jakarta Sans](https://github.com/tokotype/PlusJakartaSans) by The Plus Jakarta Sans Project Authors
+  ([licence](licenses/OFL-PlusJakartaSans.txt)).
 - **Icons** (`app/src/main/res/drawable/ic_*.xml`) are [Material Icons](https://github.com/google/material-design-icons)
   by Google, Apache License 2.0.
 - **Gradle wrapper** (`gradlew`, `gradlew.bat`, `gradle/wrapper/`) is from [Gradle](https://gradle.org), Apache License 2.0,

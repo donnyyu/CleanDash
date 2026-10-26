@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Analog Studio clock: 300×300, centred, for AnalogClock (see home_analog.xml). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="300dp"
+    android:height="300dp"
+    android:viewportWidth="300"
+    android:viewportHeight="300">
+    <path android:fillColor="@color/analog_panel" android:strokeColor="@color/analog_line" android:strokeWidth="2"
+        android:pathData="M150,4a146,146 0 1,0 0.01,0z" />
+    <path android:strokeColor="#E4DFD6" android:strokeWidth="1"
+        android:pathData="M150,26a124,124 0 1,0 0.01,0z" />
+    <path android:strokeColor="@color/analog_text" android:strokeWidth="5" android:strokeLineCap="round"
+        android:pathData="M150.00,16.00L150.00,40.00" />
+    <path android:strokeColor="@color/analog_text" android:strokeWidth="3" android:strokeLineCap="round"
+        android:pathData="M217.00,33.95L209.00,47.81" />
+    <path android:strokeColor="@color/analog_text" android:strokeWidth="3" android:strokeLineCap="round"
+        android:pathData="M266.05,83.00L252.19,91.00" />
+    <path android:strokeColor="@color/analog_text" android:strokeWidth="5" android:strokeLineCap="round"
+        android:pathData="M284.00,150.00L260.00,150.00" />
+    <path android:strokeColor="@color/analog_text" android:strokeWidth="3" android:strokeLineCap="round"
+        android:pathData="M266.05,217.00L252.19,209.00" />
+    <path android:strokeColor="@color/analog_text" android:strokeWidth="3" android:strokeLineCap="round"
+        android:pathData="M217.00,266.05L209.00,252.19" />
+    <path android:strokeColor="@color/analog_text" android:strokeWidth="5" android:strokeLineCap="round"
+        android:pathData="M150.00,284.00L150.00,260.00" />
+    <path android:strokeColor="@color/analog_text" android:strokeWidth="3" android:strokeLineCap="round"
+        android:pathData="M83.00,266.05L91.00,252.19" />
+    <path android:strokeColor="@color/analog_text" android:strokeWidth="3" android:strokeLineCap="round"
+        android:pathData="M33.95,217.00L47.81,209.00" />
+    <path android:strokeColor="@color/analog_text" android:strokeWidth="5" android:strokeLineCap="round"
+        android:pathData="M16.00,150.00L40.00,150.00" />
+    <path android:strokeColor="@color/analog_text" android:strokeWidth="3" android:strokeLineCap="round"
+        android:pathData="M33.95,83.00L47.81,91.00" />
+    <path android:strokeColor="@color/analog_text" android:strokeWidth="3" android:strokeLineCap="round"
+        android:pathData="M83.00,33.95L91.00,47.81" />
+</vector>

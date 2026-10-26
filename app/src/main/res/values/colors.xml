@@ -34,4 +34,38 @@
     <color name="rail_accent">#2F5BFF</color>
     <color name="rail_on_accent">#FFFFFF</color>
     <color name="rail_pressed">#1F0B0D12</color>
+
+    <!-- D · Analog Studio (light) -->
+    <color name="analog_bg">#ECE8E1</color>
+    <color name="analog_panel">#F7F5F1</color>
+    <color name="analog_line">#D3CEC5</color>
+    <color name="analog_track">#DCD7CE</color>
+    <color name="analog_text">#1C1C1A</color>
+    <color name="analog_muted">#5E5B55</color>
+    <color name="analog_accent">#F0642A</color>
+    <color name="analog_accent_edge">#B8441A</color>
+
+    <!-- E · Night Halo -->
+    <color name="halo_bg">#000000</color>
+    <color name="halo_line">#2E2E2E</color>
+    <color name="halo_rule">#262626</color>
+    <color name="halo_text">#D9D9D9</color>
+    <color name="halo_bright">#E6E6E6</color>
+    <color name="halo_muted">#8C8C8C</color>
+    <color name="halo_accent">#FF453A</color>
+
+    <!-- F · Color Cards -->
+    <color name="cards_bg">#0F1220</color>
+    <color name="cards_panel">#1B1F33</color>
+    <color name="cards_line">#2E3450</color>
+    <color name="cards_text">#F4F5FA</color>
+    <color name="cards_muted">#9AA0B8</color>
+    <color name="cards_maps">#178A57</color>
+    <color name="cards_music">#D6336C</color>
+    <color name="cards_radio">#F5A524</color>
+    <color name="cards_radio_text">#1A1206</color>
+    <color name="cards_carplay">#3D63F0</color>
+    <color name="cards_bluetooth">#7357F0</color>
+    <color name="cards_eq">#0B7F86</color>
+    <color name="cards_settings">#565D78</color>
 </resources>

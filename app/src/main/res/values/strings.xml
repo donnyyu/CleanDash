@@ -24,9 +24,19 @@
     <string name="theme_glass">Glass Cockpit</string>
     <string name="theme_instrument">Instrument</string>
     <string name="theme_rail">Driver Rail (light)</string>
+    <string name="theme_analog">Analog Studio (light)</string>
+    <string name="theme_halo">Night Halo</string>
+    <string name="theme_cards">Color Cards</string>
 
     <string name="maps_hint">Navigate</string>
     <string name="carplay_hint">Connect your phone</string>
+    <string name="carplay_short">Connect phone</string>
+    <string name="music_hint">USB and phone</string>
+    <string name="radio_hint">FM and AM</string>
+    <string name="bluetooth_hint">Phone and calls</string>
+    <string name="eq_hint">Sound</string>
+    <string name="settings_hint">Car and system</string>
+    <string name="apps_hint">Everything installed</string>
 
     <string name="media_source">Media</string>
     <string name="media_playing">Now playing</string>

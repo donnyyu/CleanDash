@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- View styles for the Home layouts (home_glass, home_instrument, home_rail). -->
+<!-- View styles for the Home layouts (home_glass, home_instrument, home_rail, home_analog, home_halo, home_cards). -->
 <resources>
 
     <!-- A · Glass Cockpit -->
@@ -146,5 +146,126 @@
         <item name="android:padding">17dp</item>
         <item name="android:background">@drawable/rail_button</item>
         <item name="android:tint">@color/rail_text</item>
+    </style>
+
+    <!-- D · Analog Studio (light). A key's ripple sits on its round icon, which follows the tile's pressed
+         state through duplicateParentState. -->
+    <style name="Analog" />
+
+    <style name="Analog.Tile">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="Analog.TileIcon">
+        <item name="android:layout_width">116dp</item>
+        <item name="android:layout_height">116dp</item>
+        <item name="android:padding">38dp</item>
+        <item name="android:background">@drawable/analog_button</item>
+        <item name="android:duplicateParentState">true</item>
+        <item name="android:importantForAccessibility">no</item>
+        <item name="android:tint">@color/analog_text</item>
+    </style>
+
+    <style name="Analog.TileLabel">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:fontFamily">@font/archivo_semibold</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textColor">@color/analog_text</item>
+        <item name="android:textSize">17sp</item>
+    </style>
+
+    <style name="Analog.Button">
+        <item name="android:layout_width">64dp</item>
+        <item name="android:layout_height">64dp</item>
+        <item name="android:padding">20dp</item>
+        <item name="android:background">@drawable/analog_small_button</item>
+        <item name="android:tint">@color/analog_text</item>
+    </style>
+
+    <!-- E · Night Halo -->
+    <style name="Halo" />
+
+    <style name="Halo.Tile">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/halo_key_gap</item>
+        <item name="android:layout_marginBottom">@dimen/halo_key_gap</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="Halo.TileIcon">
+        <item name="android:layout_width">@dimen/halo_key</item>
+        <item name="android:layout_height">@dimen/halo_key</item>
+        <item name="android:padding">@dimen/halo_key_padding</item>
+        <item name="android:background">@drawable/halo_button</item>
+        <item name="android:duplicateParentState">true</item>
+        <item name="android:importantForAccessibility">no</item>
+        <item name="android:tint">@color/halo_text</item>
+    </style>
+
+    <style name="Halo.TileLabel">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:fontFamily">@font/outfit_regular</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textColor">@color/halo_muted</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="Halo.Button">
+        <item name="android:layout_width">64dp</item>
+        <item name="android:layout_height">64dp</item>
+        <item name="android:padding">20dp</item>
+        <item name="android:background">@drawable/halo_button</item>
+        <item name="android:tint">@color/halo_text</item>
+    </style>
+
+    <!-- F · Color Cards -->
+    <style name="Cards" />
+
+    <style name="Cards.Card">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingStart">28dp</item>
+        <item name="android:paddingTop">26dp</item>
+        <item name="android:paddingEnd">28dp</item>
+        <item name="android:paddingBottom">24dp</item>
+    </style>
+
+    <style name="Cards.CardIcon">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:importantForAccessibility">no</item>
+        <item name="android:tint">@android:color/white</item>
+    </style>
+
+    <style name="Cards.CardLabel">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/plus_jakarta_extrabold</item>
+        <item name="android:letterSpacing">-0.015</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">32sp</item>
+    </style>
+
+    <style name="Cards.CardHint">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/plus_jakarta_semibold</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">17sp</item>
     </style>
 </resources>

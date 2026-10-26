@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- F · Color Cards: one colour per app, two rows of four big cards, the clock and a mini player on top.
+     Tiles carry android:tag = a Tiles id, their parts "icon" and "label"; MainActivity fills them. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cards_bg"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:paddingStart="48dp"
+    android:paddingTop="24dp"
+    android:paddingEnd="48dp"
+    android:paddingBottom="32dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <!-- Hold the clock for Theme, Home screen settings and Reset. On a narrow screen the date shortens first. -->
+        <LinearLayout
+            android:id="@+id/clock"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:baselineAligned="true"
+            android:orientation="horizontal">
+
+            <TextClock
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_bold"
+                android:format12Hour="h:mm"
+                android:format24Hour="HH:mm"
+                android:includeFontPadding="false"
+                android:letterSpacing="-0.03"
+                android:textColor="@color/cards_text"
+                android:textSize="60sp" />
+
+            <TextClock
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:fontFamily="@font/plus_jakarta_semibold"
+                android:singleLine="true"
+                android:format12Hour="EEEE, d MMMM"
+                android:format24Hour="EEEE, d MMMM"
+                android:textColor="@color/cards_muted"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/set_home"
+            android:layout_width="wrap_content"
+            android:layout_height="56dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/cards_set_home"
+            android:fontFamily="@font/plus_jakarta_bold"
+            android:gravity="center"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:text="@string/set_home"
+            android:textColor="@color/cards_text"
+            android:textSize="16sp"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/media_card"
+            android:layout_width="@dimen/cards_player_width"
+            android:layout_height="76dp"
+            android:background="@drawable/cards_pill"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp">
+
+            <ImageView
+                android:id="@+id/media_art"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@drawable/cards_art"
+                android:importantForAccessibility="no"
+                android:padding="16dp"
+                android:src="@drawable/ic_music"
+                android:tint="@android:color/white" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/media_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/plus_jakarta_bold"
+                    android:singleLine="true"
+                    android:textColor="@color/cards_text"
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/media_artist"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/plus_jakarta_semibold"
+                    android:singleLine="true"
+                    android:textColor="@color/cards_muted"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/media_next"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/media_next"
+                android:padding="16dp"
+                android:src="@drawable/ic_skip_next"
+                android:tint="@color/cards_text" />
+
+            <ImageView
+                android:id="@+id/media_play"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/cards_play"
+                android:contentDescription="@string/media_play"
+                android:padding="17dp"
+                android:src="@drawable/ic_play"
+                android:tint="@color/cards_bg" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Cards keep a 10dp margin all round; the -10dp here lines their outer edges up with the top row. -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="-10dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="-10dp"
+        android:layout_marginBottom="-10dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <LinearLayout style="@style/Cards.Card" android:background="@drawable/cards_maps" android:tag="maps">
+                <ImageView style="@style/Cards.CardIcon" android:tag="icon" />
+                <Space android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" />
+                <TextView style="@style/Cards.CardLabel" android:tag="label" />
+                <TextView style="@style/Cards.CardHint" android:text="@string/maps_hint" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/Cards.Card" android:background="@drawable/cards_music" android:tag="music">
+                <ImageView style="@style/Cards.CardIcon" android:tag="icon" />
+                <Space android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" />
+                <TextView style="@style/Cards.CardLabel" android:tag="label" />
+                <TextView style="@style/Cards.CardHint" android:text="@string/music_hint" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/Cards.Card" android:background="@drawable/cards_radio" android:tag="radio">
+                <ImageView style="@style/Cards.CardIcon" android:tag="icon" android:tint="@color/cards_radio_text" />
+                <Space android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" />
+                <TextView style="@style/Cards.CardLabel" android:tag="label" android:textColor="@color/cards_radio_text" />
+                <TextView style="@style/Cards.CardHint" android:text="@string/radio_hint" android:textColor="@color/cards_radio_text" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/Cards.Card" android:background="@drawable/cards_carplay" android:tag="carplay">
+                <ImageView style="@style/Cards.CardIcon" android:tag="icon" />
+                <Space android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" />
+                <TextView style="@style/Cards.CardLabel" android:tag="label" />
+                <TextView style="@style/Cards.CardHint" android:text="@string/carplay_short" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <LinearLayout style="@style/Cards.Card" android:background="@drawable/cards_bluetooth" android:tag="bluetooth">
+                <ImageView style="@style/Cards.CardIcon" android:tag="icon" />
+                <Space android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" />
+                <TextView style="@style/Cards.CardLabel" android:tag="label" />
+                <TextView style="@style/Cards.CardHint" android:text="@string/bluetooth_hint" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/Cards.Card" android:background="@drawable/cards_eq" android:tag="eq">
+                <ImageView style="@style/Cards.CardIcon" android:tag="icon" />
+                <Space android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" />
+                <TextView style="@style/Cards.CardLabel" android:tag="label" />
+                <TextView style="@style/Cards.CardHint" android:text="@string/eq_hint" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/Cards.Card" android:background="@drawable/cards_settings" android:tag="settings">
+                <ImageView style="@style/Cards.CardIcon" android:tag="icon" />
+                <Space android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" />
+                <TextView style="@style/Cards.CardLabel" android:tag="label" />
+                <TextView style="@style/Cards.CardHint" android:text="@string/settings_hint" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/Cards.Card" android:background="@drawable/cards_apps" android:tag="apps">
+                <ImageView style="@style/Cards.CardIcon" android:tag="icon" android:tint="@color/cards_text" />
+                <Space android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" />
+                <TextView style="@style/Cards.CardLabel" android:tag="label" android:textColor="@color/cards_text" />
+                <TextView style="@style/Cards.CardHint" android:text="@string/apps_hint" android:textColor="@color/cards_muted" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

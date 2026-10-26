@@ -10,7 +10,10 @@ import android.content.SharedPreferences;
 enum HomeTheme {
     GLASS(R.string.theme_glass, R.layout.home_glass, R.style.Theme_CleanDash_Glass),
     INSTRUMENT(R.string.theme_instrument, R.layout.home_instrument, R.style.Theme_CleanDash_Instrument),
-    RAIL(R.string.theme_rail, R.layout.home_rail, R.style.Theme_CleanDash_Rail);
+    RAIL(R.string.theme_rail, R.layout.home_rail, R.style.Theme_CleanDash_Rail),
+    ANALOG(R.string.theme_analog, R.layout.home_analog, R.style.Theme_CleanDash_Analog),
+    HALO(R.string.theme_halo, R.layout.home_halo, R.style.Theme_CleanDash_Halo),
+    CARDS(R.string.theme_cards, R.layout.home_cards, R.style.Theme_CleanDash_Cards);
 
     private static final String KEY = "theme";
 
