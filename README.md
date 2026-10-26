@@ -1,5 +1,7 @@
 # CleanDash
 
+English | [简体中文](README.zh-CN.md)
+
 A clean, bloat-free Android launcher for aftermarket car head units: the Topway TS10/TS18, FYT and Microntek units
 sold on AliExpress.
 
@@ -70,7 +72,6 @@ TS18 firmware locks both behind passwords:
 - **Developer options:** `7890` followed by the current hour in 24-hour format, from the head unit's clock. At
   10:xx it is `789010`; at 15:xx it is `789015`.
 - **USB debugging:** `john@tw-desktop`
-
 - **Factory settings** (in the car settings app): `123456`
 
 The USB port on many of these units only works as a host, so a USB cable to a computer may not give you ADB. Use ADB
@@ -83,8 +84,9 @@ over Wi-Fi instead, switched on from the head unit itself:
 
 The setting goes back to off after a reboot. To keep ADB over Wi-Fi on after reboots, run
 `adb shell setprop persist.adb.tcp.port 5555` once while connected; `adb shell setprop persist.adb.tcp.port ""` undoes
-it. Port 5555 has no encryption, so anyone on the same Wi-Fi can try to connect. Engineer Mode can also be opened by dialling `*#*#83781#*#*`.
-Sources: [StarMusa88's Topway ADB guide](https://github.com/StarMusa88/TopWay-Android-Headunit-ADB-Guide) and
+it. Port 5555 has no encryption, so anyone on the same Wi-Fi can try to connect.
+
+Engineer Mode can also be opened by dialling `*#*#83781#*#*`. Sources: [StarMusa88's Topway ADB guide](https://github.com/StarMusa88/TopWay-Android-Headunit-ADB-Guide) and
 [electronics101clt's UIS7862 notes](https://github.com/electronics101clt/uis7862a-1h10-headunit).
 
 ## Going back
@@ -94,7 +96,8 @@ choose *Home screen settings*. CleanDash never disables or uninstalls anything, 
 
 ## Status
 
-Early. Tested in the build only, not yet on a real head unit.
+Early. Runs on a Topway TS18 (Unisoc SC9863A, Android 10, 1280×720) and the Android emulator. The CleanDash screens
+are in English for now.
 
 ## License
 
