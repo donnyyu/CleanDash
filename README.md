@@ -93,7 +93,9 @@ Everything else works the same in every theme:
 2. Copy the APK to a USB stick and open it with the head unit's file manager, or use
    `adb install app-release.apk` over USB debugging.
 3. Open **CleanDash** from the app list and try it as a normal app first.
-4. When you're happy, tap **Set as Home** and pick CleanDash.
+4. When you're happy, tap **Set as Home** and pick CleanDash. Wait about 10 seconds before restarting the head unit:
+   Android saves the Home choice after a short delay, and a restart straight away can lose it and bring the stock
+   launcher back. If that happens, just tap *Set as Home* again.
 
 CleanDash only becomes a Home screen after step 4: its Home entry ships switched off.
 

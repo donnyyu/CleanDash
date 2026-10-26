@@ -84,7 +84,7 @@
    `app/build/outputs/apk/release/app-release.apk`。
 2. 把 APK 复制到 U 盘，用车机的文件管理器打开安装；或者开启调试后用 `adb install app-release.apk` 安装。
 3. 先从应用列表打开 **CleanDash**，当作普通应用试用。
-4. 满意之后，点 **Set as Home**（设为主屏幕），选择 CleanDash。
+4. 满意之后，点 **Set as Home**（设为主屏幕），选择 CleanDash。之后请等大约 10 秒再重启车机：安卓会稍等片刻才保存主屏幕设置，马上重启可能会丢失这个设置，又回到原厂桌面。如果发生这种情况，再点一次 *Set as Home* 即可。
 
 只有完成第 4 步，CleanDash 才会成为主屏幕：它的主屏幕入口默认是关闭的。
 
