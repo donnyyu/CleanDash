@@ -3,8 +3,17 @@
      1280×720 screen (1280×662dp once the status bar is taken off) uses values-h640dp and values-w1200dp. -->
 <resources>
     <dimen name="halo_key">76dp</dimen>
-    <dimen name="halo_key_padding">24dp</dimen>
+    <dimen name="halo_key_padding">19dp</dimen>
     <dimen name="halo_key_gap">5dp</dimen>
     <dimen name="halo_clock">150sp</dimen>
+    <dimen name="halo_label_max">110dp</dimen>
     <dimen name="cards_player_width">340dp</dimen>
+    <dimen name="cards_label">32sp</dimen>
+    <dimen name="instrument_label">16sp</dimen>
+    <dimen name="glass_icon">40dp</dimen>
+    <dimen name="glass_label">24sp</dimen>
+    <dimen name="glass_maps_icon">44dp</dimen>
+    <dimen name="glass_maps_label">30sp</dimen>
+    <dimen name="rail_icon">28dp</dimen>
+    <dimen name="rail_label">14sp</dimen>
 </resources>

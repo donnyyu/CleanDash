@@ -113,6 +113,12 @@ final class Tiles {
         editor.apply();
     }
 
+    /** The app the person picked for this tile, or null when it is on Automatic. */
+    static ComponentName pick(Context context, Tile tile) {
+        String picked = prefs(context).getString(tile.id, null);
+        return picked == null ? null : ComponentName.unflattenFromString(picked);
+    }
+
     static void clearPicks(Context context) {
         prefs(context).edit().clear().apply();
     }

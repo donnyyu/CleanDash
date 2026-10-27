@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="halo_key">92dp</dimen>
-    <dimen name="halo_key_padding">29dp</dimen>
+    <dimen name="halo_key_padding">23dp</dimen>
     <dimen name="halo_key_gap">10dp</dimen>
     <dimen name="halo_clock">184sp</dimen>
+    <dimen name="halo_label_max">130dp</dimen>
+    <dimen name="rail_icon">34dp</dimen>
+    <dimen name="rail_label">16sp</dimen>
 </resources>

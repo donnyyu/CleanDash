@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -162,18 +163,37 @@ public class MainActivity extends Activity {
         }, "load-apps").start();
     }
 
-    /** Dims the tiles whose app is not on this unit, so a missing app shows before it is tapped. */
+    /**
+     * Names each tile after the app picked for it, if any, and dims the tiles whose app is not on this unit,
+     * so a missing app shows before it is tapped.
+     */
     private void refreshTiles() {
         for (View view : tileViews) {
             Tiles.Tile tile = Tiles.byId((String) view.getTag());
             boolean found = Tiles.APPS.equals(tile.id) || Tiles.resolve(this, tile, apps) != null;
+            CharSequence name = name(tile);
+            view.setContentDescription(name);
             View icon = view.findViewWithTag(ICON);
             if (icon != null) icon.setAlpha(found ? 1f : 0.35f);
-            View label = view.findViewWithTag(LABEL);
-            if (label != null) label.setAlpha(found ? 1f : 0.5f);
+            TextView label = view.findViewWithTag(LABEL);
+            if (label != null) {
+                label.setText(name);
+                label.setAlpha(found ? 1f : 0.5f);
+            }
             View hint = view.findViewWithTag(HINT);
             if (hint != null) hint.setVisibility(found ? View.GONE : View.VISIBLE);
         }
+    }
+
+    /** The picked app's name; the tile's own name on Automatic, or when the picked app is gone. */
+    private CharSequence name(Tiles.Tile tile) {
+        ComponentName picked = Tiles.pick(this, tile);
+        if (picked != null) {
+            for (AppList.App app : apps) {
+                if (app.component.equals(picked)) return app.label;
+            }
+        }
+        return getText(tile.label);
     }
 
     private void open(Tiles.Tile tile) {

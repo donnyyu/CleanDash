@@ -23,8 +23,8 @@
     </style>
 
     <style name="Glass.TileIcon">
-        <item name="android:layout_width">36dp</item>
-        <item name="android:layout_height">36dp</item>
+        <item name="android:layout_width">@dimen/glass_icon</item>
+        <item name="android:layout_height">@dimen/glass_icon</item>
         <item name="android:importantForAccessibility">no</item>
         <item name="android:tint">@color/glass_text</item>
     </style>
@@ -33,9 +33,10 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">@font/inter_tight_medium</item>
+        <item name="android:ellipsize">end</item>
         <item name="android:maxLines">1</item>
         <item name="android:textColor">@color/glass_text</item>
-        <item name="android:textSize">22sp</item>
+        <item name="android:textSize">@dimen/glass_label</item>
     </style>
 
     <style name="Glass.TileHint">
@@ -44,7 +45,7 @@
         <item name="android:fontFamily">@font/inter_tight_regular</item>
         <item name="android:text">@string/tile_not_found</item>
         <item name="android:textColor">@color/glass_muted</item>
-        <item name="android:textSize">13sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:visibility">gone</item>
     </style>
 
@@ -71,8 +72,8 @@
     </style>
 
     <style name="Instrument.TileIcon">
-        <item name="android:layout_width">40dp</item>
-        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_width">52dp</item>
+        <item name="android:layout_height">52dp</item>
         <item name="android:importantForAccessibility">no</item>
         <item name="android:tint">@color/instrument_text</item>
     </style>
@@ -80,13 +81,14 @@
     <style name="Instrument.TileLabel">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">18dp</item>
+        <item name="android:layout_marginTop">16dp</item>
         <item name="android:fontFamily">@font/barlow_semibold</item>
-        <item name="android:letterSpacing">0.2</item>
+        <item name="android:letterSpacing">0.14</item>
+        <item name="android:ellipsize">end</item>
         <item name="android:maxLines">1</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:textColor">@color/instrument_text</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">@dimen/instrument_label</item>
     </style>
 
     <style name="Instrument.Button">
@@ -124,8 +126,8 @@
     </style>
 
     <style name="Rail.ItemIcon">
-        <item name="android:layout_width">26dp</item>
-        <item name="android:layout_height">26dp</item>
+        <item name="android:layout_width">@dimen/rail_icon</item>
+        <item name="android:layout_height">@dimen/rail_icon</item>
         <item name="android:importantForAccessibility">no</item>
         <item name="android:tint">@color/rail_text</item>
     </style>
@@ -135,9 +137,10 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">4dp</item>
         <item name="android:fontFamily">@font/space_grotesk_semibold</item>
+        <item name="android:ellipsize">end</item>
         <item name="android:maxLines">1</item>
         <item name="android:textColor">@color/rail_text</item>
-        <item name="android:textSize">13sp</item>
+        <item name="android:textSize">@dimen/rail_label</item>
     </style>
 
     <style name="Rail.Button">
@@ -163,7 +166,7 @@
     <style name="Analog.TileIcon">
         <item name="android:layout_width">116dp</item>
         <item name="android:layout_height">116dp</item>
-        <item name="android:padding">38dp</item>
+        <item name="android:padding">30dp</item>
         <item name="android:background">@drawable/analog_button</item>
         <item name="android:duplicateParentState">true</item>
         <item name="android:importantForAccessibility">no</item>
@@ -175,9 +178,10 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">12dp</item>
         <item name="android:fontFamily">@font/archivo_semibold</item>
+        <item name="android:ellipsize">end</item>
         <item name="android:maxLines">1</item>
         <item name="android:textColor">@color/analog_text</item>
-        <item name="android:textSize">17sp</item>
+        <item name="android:textSize">20sp</item>
     </style>
 
     <style name="Analog.Button">
@@ -215,9 +219,11 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">8dp</item>
         <item name="android:fontFamily">@font/outfit_regular</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxWidth">@dimen/halo_label_max</item>
         <item name="android:maxLines">1</item>
         <item name="android:textColor">@color/halo_muted</item>
-        <item name="android:textSize">15sp</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
     <style name="Halo.Button">
@@ -244,8 +250,8 @@
     </style>
 
     <style name="Cards.CardIcon">
-        <item name="android:layout_width">48dp</item>
-        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">60dp</item>
         <item name="android:importantForAccessibility">no</item>
         <item name="android:tint">@android:color/white</item>
     </style>
@@ -255,9 +261,10 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">@font/plus_jakarta_extrabold</item>
         <item name="android:letterSpacing">-0.015</item>
+        <item name="android:ellipsize">end</item>
         <item name="android:maxLines">1</item>
         <item name="android:textColor">@android:color/white</item>
-        <item name="android:textSize">32sp</item>
+        <item name="android:textSize">@dimen/cards_label</item>
     </style>
 
     <style name="Cards.CardHint">
@@ -266,6 +273,6 @@
         <item name="android:fontFamily">@font/plus_jakarta_semibold</item>
         <item name="android:maxLines">1</item>
         <item name="android:textColor">@android:color/white</item>
-        <item name="android:textSize">17sp</item>
+        <item name="android:textSize">19sp</item>
     </style>
 </resources>

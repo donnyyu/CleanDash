@@ -258,8 +258,8 @@
 
                 <ImageView
                     android:tag="icon"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:importantForAccessibility="no"
                     android:tint="@color/rail_on_accent" />
 
@@ -272,9 +272,11 @@
                     android:tag="label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:ellipsize="end"
                     android:fontFamily="@font/space_grotesk_semibold"
+                    android:maxLines="1"
                     android:textColor="@color/rail_on_accent"
-                    android:textSize="32sp" />
+                    android:textSize="40sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
