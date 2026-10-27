@@ -1,3 +1,5 @@
+<img src="docs/logo.svg" width="96" alt="CleanDash logo">
+
 # CleanDash
 
 English | [简体中文](README.zh-CN.md)
