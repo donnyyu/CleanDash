@@ -82,13 +82,17 @@
 
 ## 安装
 
-1. 编译：`./gradlew assembleRelease`（需要 JDK 17 和 Android SDK platform 34）。APK 在
-   `app/build/outputs/apk/release/app-release.apk`。
-2. 把 APK 复制到 U 盘，用车机的文件管理器打开安装；或者开启调试后用 `adb install app-release.apk` 安装。
+1. 从[最新版本](https://github.com/donnyyu/CleanDash/releases/latest)下载 APK。
+2. 把 APK 复制到 U 盘，用车机的文件管理器打开安装；或者开启调试后用 `adb install CleanDash-<版本号>.apk` 安装。
 3. 先从应用列表打开 **CleanDash**，当作普通应用试用。
 4. 满意之后，点 **Set as Home**（设为主屏幕），选择 CleanDash。之后请等大约 10 秒再重启车机：安卓会稍等片刻才保存主屏幕设置，马上重启可能会丢失这个设置，又回到原厂桌面。如果发生这种情况，再点一次 *Set as Home* 即可。
 
 只有完成第 4 步，CleanDash 才会成为主屏幕：它的主屏幕入口默认是关闭的。
+
+以后的新版本可以直接覆盖安装。自己编译的版本使用不同的签名，安装正式版之前请先卸载它。
+
+**自己编译：** `./gradlew assembleRelease`（需要 JDK 17 和 Android SDK platform 34）。APK 在
+`app/build/outputs/apk/release/app-release.apk`。详见 [CONTRIBUTING.zh-CN.md](CONTRIBUTING.zh-CN.md)。
 
 ## 开发者选项和 USB 调试（Topway TS18）
 

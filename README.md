@@ -90,16 +90,21 @@ Everything else works the same in every theme:
 
 ## Install
 
-1. Build: `./gradlew assembleRelease` (JDK 17 and the Android SDK, platform 34). The APK is
-   `app/build/outputs/apk/release/app-release.apk`.
+1. Download the APK from the [latest release](https://github.com/donnyyu/CleanDash/releases/latest).
 2. Copy the APK to a USB stick and open it with the head unit's file manager, or use
-   `adb install app-release.apk` over USB debugging.
+   `adb install CleanDash-<version>.apk` over USB debugging.
 3. Open **CleanDash** from the app list and try it as a normal app first.
 4. When you're happy, tap **Set as Home** and pick CleanDash. Wait about 10 seconds before restarting the head unit:
    Android saves the Home choice after a short delay, and a restart straight away can lose it and bring the stock
    launcher back. If that happens, just tap *Set as Home* again.
 
 CleanDash only becomes a Home screen after step 4: its Home entry ships switched off.
+
+Later releases install over this one as updates. A copy you built yourself is signed with a different key, so
+uninstall it before installing a release.
+
+**Building it yourself:** `./gradlew assembleRelease` (JDK 17 and the Android SDK, platform 34). The APK is
+`app/build/outputs/apk/release/app-release.apk`. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Developer options and USB debugging (Topway TS18)
 
