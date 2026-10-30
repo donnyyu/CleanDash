@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.media.session.MediaController;
 import android.os.Bundle;
@@ -43,6 +44,9 @@ public class MainActivity extends Activity {
     private static final String HINT = "hint";
 
     private final List<View> tileViews = new ArrayList<>();
+    /** The theme this activity was created with; a different HomeTheme.current() means recreate. */
+    private HomeTheme shownTheme;
+    private BroadcastReceiver headlightsChanged;
     private List<AppList.App> apps = Collections.emptyList();
     private View setHome;
     private NowPlaying nowPlaying;
@@ -68,6 +72,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         HomeTheme theme = HomeTheme.current(this);
+        shownTheme = theme;
         setTheme(theme.style);
         super.onCreate(savedInstanceState);
         setContentView(theme.layout);
@@ -89,6 +94,7 @@ public class MainActivity extends Activity {
         filter.addAction(Intent.ACTION_PACKAGE_CHANGED);
         filter.addDataScheme("package");
         registerReceiver(packagesChanged, filter);
+        headlightsChanged = NightMode.register(this, this::showCurrentTheme);
         loadApps();
     }
 
@@ -117,7 +123,20 @@ public class MainActivity extends Activity {
     @Override
     protected void onDestroy() {
         unregisterReceiver(packagesChanged);
+        unregisterReceiver(headlightsChanged);
         super.onDestroy();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        // uiMode is in the manifest's configChanges, so Android's night mode lands here instead of recreating.
+        showCurrentTheme();
+    }
+
+    /** Switches to the day or night theme if the one showing is no longer right. */
+    private void showCurrentTheme() {
+        if (HomeTheme.current(this) != shownTheme) recreate();
     }
 
     @Override
@@ -374,13 +393,15 @@ public class MainActivity extends Activity {
     }
 
     private void showMenu() {
-        String[] items = {getString(R.string.menu_theme), getString(R.string.menu_home),
-                getString(R.string.menu_reset)};
+        String[] items = {getString(R.string.menu_theme), getString(R.string.menu_night_theme),
+                getString(R.string.menu_home), getString(R.string.menu_reset)};
         new AlertDialog.Builder(this)
                 .setItems(items, (dialog, which) -> {
                     if (which == 0) {
                         chooseTheme();
                     } else if (which == 1) {
+                        chooseNightTheme();
+                    } else if (which == 2) {
                         HomeRole.request(this);
                     } else {
                         Tiles.clearPicks(this);
@@ -396,15 +417,31 @@ public class MainActivity extends Activity {
         for (int i = 0; i < themes.length; i++) {
             names[i] = getString(themes[i].label);
         }
-        HomeTheme current = HomeTheme.current(this);
         new AlertDialog.Builder(this)
                 .setTitle(R.string.menu_theme)
-                .setSingleChoiceItems(names, current.ordinal(), (dialog, which) -> {
+                .setSingleChoiceItems(names, HomeTheme.day(this).ordinal(), (dialog, which) -> {
                     dialog.dismiss();
-                    if (themes[which] != current) {
-                        themes[which].save(this);
-                        recreate();
-                    }
+                    themes[which].saveDay(this);
+                    showCurrentTheme();
+                })
+                .show();
+    }
+
+    /** "Off" first, then the themes. */
+    private void chooseNightTheme() {
+        HomeTheme[] themes = HomeTheme.values();
+        String[] names = new String[themes.length + 1];
+        names[0] = getString(R.string.night_off);
+        for (int i = 0; i < themes.length; i++) {
+            names[i + 1] = getString(themes[i].label);
+        }
+        HomeTheme night = HomeTheme.night(this);
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.menu_night_theme)
+                .setSingleChoiceItems(names, night == null ? 0 : night.ordinal() + 1, (dialog, which) -> {
+                    dialog.dismiss();
+                    HomeTheme.saveNight(this, which == 0 ? null : themes[which - 1]);
+                    showCurrentTheme();
                 })
                 .show();
     }

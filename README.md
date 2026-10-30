@@ -55,6 +55,10 @@ Six looks, switched by holding the clock → *Theme*:
 - **Night Halo:** near-black for night driving, with four round keys down each edge where a thumb finds them.
 - **Color Cards:** one colour per app, in two rows of big cards, with the clock and a mini player on top.
 
+When the headlights come on, CleanDash switches to a night theme (Night Halo unless you pick another) and back
+again when they go off. It follows the head unit's light signal (the ILL wire) on Topway units such as the TS18,
+and Android's night mode on others. Choose the night theme, or turn it off, under the clock → *Night theme*.
+
 ### Supported screen sizes
 
 Every theme is laid out for landscape screens from 1024×600 up. These are the common head unit screens and how
